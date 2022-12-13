@@ -10,8 +10,8 @@ from sklearn.neighbors import NearestNeighbors
 from numpy.linalg import norm
 import cv2
 
-feature_list = np.array(pickle.load(open('feature.pkl','rb')))
-filenames = pickle.load(open('filename.pkl','rb'))
+#feature_list = np.array(pickle.load(open('feature.pkl','rb')))
+filenames = pickle.load(open('image_classifier.pkl','rb'))
 
 model = ResNet50(weights='imagenet',include_top=False,input_shape=(224,224,3))
 model.trainable = False
@@ -40,6 +40,7 @@ def extract_feature(img_path, model):
     result=model.predict(pre_img).flatten()
     normalized=result/norm(result)
     return normalized
+
 
 def recommend(features,feature_list):
     neighbors = NearestNeighbors(n_neighbors=6, algorithm='brute', metric='euclidean')
