@@ -10,8 +10,8 @@ from sklearn.neighbors import NearestNeighbors
 from numpy.linalg import norm
 import cv2
 
-feature_list = np.array(pickle.load(open('C:/Users/epi/anaconda3/envs/streamlit/Lib/streamapp/feature.pkl','rb')))
-filenames = pickle.load(open('C:/Users/epi/anaconda3/envs/streamlit/Lib/streamapp/filename.pkl','rb'))
+feature_list = np.array(pickle.load(open('feature.pkl','rb')))
+filenames = pickle.load(open('filename.pkl','rb'))
 
 model = ResNet50(weights='imagenet',include_top=False,input_shape=(224,224,3))
 model.trainable = False
